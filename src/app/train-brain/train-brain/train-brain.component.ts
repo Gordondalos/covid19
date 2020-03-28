@@ -18,9 +18,9 @@ export class TrainBrainComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const brain = window[ 'brain' ];
-    // this.net = new brain.recurrent.RNN(this.config);
-    this.net = new brain.NeuralNetwork();
+    const brain = window[ 'brain' ]; // получим либу
+    this.net = new brain.NeuralNetwork(); // создадим сеть
+    // тренируем сеть
     this.net.train([
       {
         input: Object.values(this.getTrainData(0)),

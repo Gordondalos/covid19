@@ -12,12 +12,12 @@ import { SymptomsInterface } from './symptomsInterface';
 })
 export class AppComponent implements OnInit {
   title = 'Covid 19';
-
-  form = new FormGroup({});
   model: any;
   count: any;
   result: any;
   max: any;
+
+  form = new FormGroup({});
 
   fields: FormlyFieldConfig[] = [
     {
@@ -407,14 +407,8 @@ export class AppComponent implements OnInit {
     this.model = this.form.value;
     const res = await this.dataService.createRow(this.model);
     const data = new SymptomsInterface(
-      this.model.soreThroat,
-      this.model.sneezing,
-      this.model.runnyNose,
-      this.model.cough,
-      this.model.temperature,
-      this.model.fatigue,
-      this.model.bodyAches,
-      this.model.chills,
+      this.model.soreThroat, this.model.sneezing, this.model.runnyNose, this.model.cough,
+      this.model.temperature, this.model.fatigue, this.model.bodyAches, this.model.chills,
       this.model.headache,
       this.model.difficultyBreathing,
       this.model.nausea,
@@ -423,6 +417,7 @@ export class AppComponent implements OnInit {
       this.model.stomachAche,
     );
     this.result = this.brainService.getRes(data);
+    console.log(this.result);
     this.getMaxResult()
   }
 
