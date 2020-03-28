@@ -5,6 +5,11 @@ import { TrainBrainComponent } from './train-brain/train-brain/train-brain.compo
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'train',
+    pathMatch: 'full',
+  },
+  {
     path: 'train',
     component: TrainBrainComponent,
   },

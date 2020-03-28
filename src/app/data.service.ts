@@ -29,7 +29,8 @@ export class DataService {
 
   async updateCount(): Promise<any> {
     let count = await this.getCount();
-    if (count !== null && count !== undefined && count !== 0) {
+    count = +count;
+    if (count === null || count === undefined) {
       count = 0;
     } else {
       count += 1;

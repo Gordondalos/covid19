@@ -404,7 +404,6 @@ export class AppComponent implements OnInit {
   async onSubmit(): Promise<void> {
     this.model = this.form.value;
     const res = await this.dataService.createRow(this.model);
-    console.log(res);
     const data = new SymptomsInterface(
       this.model.soreThroat,
       this.model.sneezing,
@@ -422,7 +421,6 @@ export class AppComponent implements OnInit {
       this.model.stomachAche,
     );
     this.result = this.brainService.getRes(data);
-    console.log(this.result);
     this.getMaxResult()
   }
 
@@ -434,7 +432,6 @@ export class AppComponent implements OnInit {
         max = { key: key, val: res[ key ] };
       }
     }
-    console.log(max);
     this.max = max;
   }
 
