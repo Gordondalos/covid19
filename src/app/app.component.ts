@@ -47,6 +47,7 @@ export class AppComponent implements OnInit {
           className: 'w-50 mr8',
           templateOptions: {
             label: 'Телефон',
+            type: 'number',
             floatingLabel: 'always',
             placeholder: 'Телефон',
             required: true,
@@ -98,6 +99,7 @@ export class AppComponent implements OnInit {
           templateOptions: {
             label: 'Возраст (в годах)',
             floatingLabel: 'always',
+            type: 'number',
             placeholder: 'Укажите возраст',
             required: true,
             appearance: 'outline',
