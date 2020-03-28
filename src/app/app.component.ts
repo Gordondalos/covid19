@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
+import { AngularFirestore } from '@angular/fire/firestore';
+import { DataService } from './data.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Covid 19';
 
   form = new FormGroup({});
   model = {};
+  count: any;
 
   fields: FormlyFieldConfig[] = [
     {
@@ -72,14 +75,17 @@ export class AppComponent {
       fieldGroup: [
         {
           key: 'sex',
-          type: 'input',
+          type: 'select',
           className: 'w-50 mr8',
           templateOptions: {
-            label: 'Пол (М/Ж)',
+            label: 'Пол',
             floatingLabel: 'always',
-            placeholder: 'Укажите пол (М/Ж)',
             required: true,
             appearance: 'outline',
+            options: [
+              { label: 'Мужчина', value: 1 },
+              { label: 'Женьщина', value: 0 },
+            ],
           },
         },
         {
@@ -382,7 +388,22 @@ export class AppComponent {
 
   ];
 
-  onSubmit(model: any) {
-    console.log(this.model);
+  constructor(
+    private dataService: DataService,
+  ) {
   }
+
+  async ngOnInit(): Promise<void> {
+    this.count = await this.dataService.getCount();
+    console.log(this.count);
+  }
+
+  async onSubmit(model: any): Promise<void> {
+    console.log(this.model);
+    const res = await this.dataService.createRow(this.model);
+    console.log(res);
+    debugger
+  }
+
+
 }

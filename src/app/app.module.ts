@@ -11,11 +11,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { SeparatorTemplateComponent } from './formly-custom-field/sepatator-tamplate/separator-template.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SeparatorTemplateComponent
+    SeparatorTemplateComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,6 +32,10 @@ import { SeparatorTemplateComponent } from './formly-custom-field/sepatator-tamp
     MatIconModule,
     MatButtonModule,
 
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule,
+    AngularFireDatabaseModule,
+
     FormlyModule.forRoot({
       types: [
         {
@@ -37,6 +46,7 @@ import { SeparatorTemplateComponent } from './formly-custom-field/sepatator-tamp
     }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {
+}
