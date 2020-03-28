@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
   form = new FormGroup({});
   model: any;
   count: any;
+  result: any;
 
   fields: FormlyFieldConfig[] = [
     {
@@ -419,8 +420,8 @@ export class AppComponent implements OnInit {
       this.model.diarrhea,
       this.model.stomachAche,
     );
-    const result = this.brainService.getRes(data);
-    console.log(result);
+    this.result = this.brainService.getRes(data);
+    console.log(this.result)
   }
 
 

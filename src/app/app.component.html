@@ -22,19 +22,34 @@
 
 <div class="d-flex p16 content">
   <div class="form-wrapper f-gr-1 mb50">
-    <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
       <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
-      <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit" class="btn btn-default">Проверить</button>
+      <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit" class="btn btn-default">
+        Проверить
+      </button>
     </form>
   </div>
-  <div class="f-gr-1">
-    <span class="bold f18 text-center d-block">
-      Результаты исследования
-    </span>
-
-    <span class="bold f18 text-center d-block py16">
+  <div class="f-gr-1 px32">
+    <span class="bold f18 d-block py16">
       Количество прошедших опрос: {{count}}
     </span>
+
+    <div class="bold f18 d-block">
+     <ng-container *ngIf="result">
+       Результаты исследования:
+     </ng-container>
+      <ng-container *ngIf="result">
+        Здесь будет отображен результат исследования.
+      </ng-container>
+    </div>
+
+    <ng-container *ngIf="result">
+      <div>Простуда c вероятностью: {{(result.cold * 100).toFixed(2)}}%</div>
+      <div>Грипп c вероятностью: {{(result.flu * 100).toFixed(2)}}%</div>
+      <div>Норовирус c вероятностью: {{(result.noro * 100).toFixed(2)}}%</div>
+      <div>Короновирус c вероятностью: : {{(result.korono * 100).toFixed(2)}}%</div>
+    </ng-container>
+
 
   </div>
 </div>
