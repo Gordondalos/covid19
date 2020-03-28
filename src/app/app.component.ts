@@ -17,6 +17,7 @@ export class AppComponent implements OnInit {
   model: any;
   count: any;
   result: any;
+  max: any;
 
   fields: FormlyFieldConfig[] = [
     {
@@ -421,7 +422,20 @@ export class AppComponent implements OnInit {
       this.model.stomachAche,
     );
     this.result = this.brainService.getRes(data);
-    console.log(this.result)
+    console.log(this.result);
+    this.getMaxResult()
+  }
+
+  getMaxResult(): void {
+    const res = this.result;
+    let max = { key: 'none', val: 0 };
+    for (let key in res) {
+      if (res[ key ] > max.val) {
+        max = { key: key, val: res[ key ] };
+      }
+    }
+    console.log(max);
+    this.max = max;
   }
 
 
