@@ -16,11 +16,13 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { TrainBrainComponent } from './train-brain/train-brain/train-brain.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SeparatorTemplateComponent,
+    TrainBrainComponent
   ],
   imports: [
     BrowserModule,

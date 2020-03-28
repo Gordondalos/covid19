@@ -2,6 +2,8 @@
   <mat-icon class="mat-18 mx16 text-white icon-plus">add_circle_outline</mat-icon>
   {{title}}</mat-toolbar>
 
+<router-outlet></router-outlet>
+
 <h1 class="p16 text-center content">Добро пожаловать на страницу дифференциальной диагностики
   <br>
   короновируса от грипа, простуты и
@@ -20,7 +22,7 @@
 
 <div class="d-flex p16 content">
   <div class="form-wrapper f-gr-1 mb50">
-    <form [formGroup]="form" (ngSubmit)="onSubmit(model)">
+    <form [formGroup]="form" (ngSubmit)="onSubmit($event)">
       <formly-form [form]="form" [fields]="fields" [model]="model"></formly-form>
       <button [disabled]="form.invalid" mat-raised-button color="primary" type="submit" class="btn btn-default">Проверить</button>
     </form>
@@ -36,6 +38,8 @@
 
   </div>
 </div>
+
+
 
 
 

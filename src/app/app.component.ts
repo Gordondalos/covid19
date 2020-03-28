@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { FormlyFieldConfig } from '@ngx-formly/core';
-import { AngularFirestore } from '@angular/fire/firestore';
 import { DataService } from './data.service';
+import { BrainService } from './brain.service';
+import { SymptomsInterface } from './symptomsInterface';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,7 @@ export class AppComponent implements OnInit {
   title = 'Covid 19';
 
   form = new FormGroup({});
-  model = {};
+  model: any;
   count: any;
 
   fields: FormlyFieldConfig[] = [
@@ -129,7 +130,7 @@ export class AppComponent implements OnInit {
           },
         },
         {
-          key: 'Sneezing',
+          key: 'sneezing',
           type: 'select',
           className: 'w-50 ml8',
           templateOptions: {
@@ -247,7 +248,7 @@ export class AppComponent implements OnInit {
           },
         },
         {
-          key: 'Chills',
+          key: 'chills',
           type: 'select',
           className: 'w-50 ml8',
           templateOptions: {
@@ -390,19 +391,36 @@ export class AppComponent implements OnInit {
 
   constructor(
     private dataService: DataService,
+    private brainService: BrainService,
   ) {
   }
 
   async ngOnInit(): Promise<void> {
     this.count = await this.dataService.getCount();
-    console.log(this.count);
   }
 
-  async onSubmit(model: any): Promise<void> {
-    console.log(this.model);
+  async onSubmit(): Promise<void> {
+    this.model = this.form.value;
     const res = await this.dataService.createRow(this.model);
     console.log(res);
-    debugger
+    const data = new SymptomsInterface(
+      this.model.soreThroat,
+      this.model.sneezing,
+      this.model.runnyNose,
+      this.model.cough,
+      this.model.temperature,
+      this.model.fatigue,
+      this.model.bodyAches,
+      this.model.chills,
+      this.model.headache,
+      this.model.difficultyBreathing,
+      this.model.nausea,
+      this.model.vomiting,
+      this.model.diarrhea,
+      this.model.stomachAche,
+    );
+    const result = this.brainService.getRes(data);
+    console.log(result);
   }
 
 
