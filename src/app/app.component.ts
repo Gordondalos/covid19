@@ -359,7 +359,7 @@ export class AppComponent implements OnInit {
           type: 'select',
           className: 'w-50 mr8',
           templateOptions: {
-            label: 'Понос',
+            label: 'Жидкий стул',
             floatingLabel: 'always',
             required: true,
             appearance: 'outline',
