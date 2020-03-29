@@ -8,7 +8,18 @@
   margin: auto;
 }
 
+
 .justify-center {
   justify-content: center;
 }
 
+@media all and(max-width:  768px) {
+  .content.wrap {
+    flex-direction: column;
+  }
+
+  .bold.f18.text-warning.content.my50 {
+    padding: 16px;
+  }
+
+}
