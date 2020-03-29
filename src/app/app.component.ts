@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
       },
     },
     {
-      fieldGroupClassName: 'd-flex w100 ',
+      fieldGroupClassName: 'd-flex w100',
       fieldGroup: [
         {
           key: 'fio',

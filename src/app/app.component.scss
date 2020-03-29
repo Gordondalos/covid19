@@ -21,5 +21,22 @@
   .bold.f18.text-warning.content.my50 {
     padding: 16px;
   }
+::ng-deep {
+  formly-group {
+    flex-direction: column;
+    width: 100%;
+    formly-field {
+      width: 100% !important;
+    }
+    .ml8 {
+      margin-left: 0 !important;
+    }
+    .mr8 {
+      margin-right: 0px !important;
+    }
+  }
+}
+
+
 
 }
