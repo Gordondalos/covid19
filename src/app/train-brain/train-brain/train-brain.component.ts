@@ -38,6 +38,10 @@ export class TrainBrainComponent implements OnInit {
         input: Object.values(this.getTrainData(3)),
         output: { korono: 1 },
       },
+      {
+        input: Object.values(this.getTrainData(4)),
+        output: { zdorov: 1 },
+      },
     ]);
     this.brainService.setNet(this.net);
   }
@@ -113,6 +117,23 @@ export class TrainBrainComponent implements OnInit {
       0,
     );
 
+    const res5 = new SymptomsInterface(
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+    );
+
     switch (index) {
       case 0:
         return res;
@@ -122,6 +143,8 @@ export class TrainBrainComponent implements OnInit {
         return res3;
       case 3:
         return res4;
+      case 4:
+        return res5;
     }
 
   }
